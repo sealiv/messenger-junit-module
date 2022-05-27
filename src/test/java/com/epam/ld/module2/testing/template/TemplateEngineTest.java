@@ -4,6 +4,8 @@ import com.epam.ld.module2.testing.Client;
 import com.epam.ld.module2.testing.exception.LeftRawTagsException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -70,5 +72,26 @@ public class TemplateEngineTest {
         doNothing().when(spyTemplate).getTagValueFromConsole();
 
         assertDoesNotThrow(() -> templateEngine.generateMessage(spyTemplate, client));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "Mail to: #{subject} Dear friend, Thank you for your interest in working for our company'.",
+            "Mail to: #{subject} Dear friend, Thank you for your interest in working for '#{companyName}'.",
+            "Mail to: #{subject} Dear #{name}, Thank you for your interest in working for '#{companyName}'."
+    })
+    void generateMessageParametrized(String candidate) throws Exception {
+        template = new Template(candidate);
+        Template spyTemplate = spy(template);
+        Field params = Template.class.getDeclaredField("params");
+        params.setAccessible(true);
+        Map<String, String> newParams = new HashMap<>();
+        newParams.put("name", "Dmitry");
+        newParams.put("companyName", "'Google'");
+        newParams.put("country", "USA");
+        params.set(spyTemplate, newParams);
+        doNothing().when(spyTemplate).getTagValueFromConsole();
+        String actual = templateEngine.generateMessage(spyTemplate, client);
+        assertTrue(actual.contains(client.getAddresses()));
     }
 }
