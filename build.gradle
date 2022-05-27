@@ -42,7 +42,9 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform() {
+        excludeTags 'learn'
+    }
     testLogging {
         events "passed", "skipped", "failed"
     }

@@ -1,0 +1,3 @@
+Mail to: #{subject}
+Dear Student,
+Thank you for your interest in working for our company.

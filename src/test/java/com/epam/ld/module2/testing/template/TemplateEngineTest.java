@@ -1,10 +1,15 @@
 package com.epam.ld.module2.testing.template;
 
 import com.epam.ld.module2.testing.Client;
+import com.epam.ld.module2.testing.UnitTest;
+import com.epam.ld.module2.testing.Utils;
 import com.epam.ld.module2.testing.exception.LeftRawTagsException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.Field;
@@ -38,13 +43,15 @@ public class TemplateEngineTest {
     }
 
     @Test
+    @Tag("UnitTest")
+    @Disabled("Disabled after create ParameterizedTest ")
     public void shouldChangeTagToValue_WhenGenerateMessage() {
         template = new Template(TEMPLATE_WITH_ONE_TAG);
         String actual = templateEngine.generateMessage(template, client);
         assertTrue(actual.contains(client.getAddresses()));
     }
 
-    @Test
+    @UnitTest
     public void shouldThrowException_WhenLeftTags() {
         template = new Template(TEMPLATE_WITH_THREE_TAGS);
 
@@ -55,7 +62,7 @@ public class TemplateEngineTest {
         verify(spyTemplate, times(1)).getTagValueFromConsole();
     }
 
-    @Test
+    @UnitTest
     public void shouldReturnTrue_WhenTagsMoreThenContainsTemplate() throws Exception {
         template = new Template(TEMPLATE_WITH_THREE_TAGS);
 
@@ -93,5 +100,20 @@ public class TemplateEngineTest {
         doNothing().when(spyTemplate).getTagValueFromConsole();
         String actual = templateEngine.generateMessage(spyTemplate, client);
         assertTrue(actual.contains(client.getAddresses()));
+    }
+
+    @Tag("learn")
+    @ParameterizedTest
+    @MethodSource("readFileTemplateTest")
+    void testWithRangeMethodSource(String argument) {
+        assertTrue(argument.contains("#{subject}"));
+    }
+
+    static String[] readFileTemplateTest() {
+        return new String[] {
+                Utils.readResource("test_template_1.txt"),
+                Utils.readResource("test_template_2.txt"),
+                Utils.readResource("test_template_3.txt"),
+        };
     }
 }
