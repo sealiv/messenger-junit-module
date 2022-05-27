@@ -1,13 +1,12 @@
 package com.epam.ld.module2.testing.template;
 
 import com.epam.ld.module2.testing.Client;
+import com.epam.ld.module2.testing.MessengerTestWatcher;
 import com.epam.ld.module2.testing.UnitTest;
 import com.epam.ld.module2.testing.Utils;
 import com.epam.ld.module2.testing.exception.LeftRawTagsException;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -19,6 +18,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MessengerTestWatcher.class)
 public class TemplateEngineTest {
 
     private Template template;
