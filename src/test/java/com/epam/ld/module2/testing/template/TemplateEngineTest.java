@@ -52,4 +52,23 @@ public class TemplateEngineTest {
         assertThrows(LeftRawTagsException.class, () -> templateEngine.generateMessage(spyTemplate, client));
         verify(spyTemplate, times(1)).getTagValueFromConsole();
     }
+
+    @Test
+    public void shouldReturnTrue_WhenTagsMoreThenContainsTemplate() throws Exception {
+        template = new Template(TEMPLATE_WITH_THREE_TAGS);
+
+        Template spyTemplate = spy(template);
+
+        Field params = Template.class.getDeclaredField("params");
+        params.setAccessible(true);
+        Map<String, String> newParams = new HashMap<>();
+        newParams.put("name", "Dmitry");
+        newParams.put("companyName", "'Google'");
+        newParams.put("country", "USA");
+        params.set(spyTemplate, newParams);
+
+        doNothing().when(spyTemplate).getTagValueFromConsole();
+
+        assertDoesNotThrow(() -> templateEngine.generateMessage(spyTemplate, client));
+    }
 }
