@@ -1,0 +1,14 @@
+*************************************************************t2.txt***
+Mail to: #{subject}
+**********************************************************************
+Dear #{receiverName},
+
+Following up on our phone conversation, I look forward to meeting with
+you and your strategic planning staff on #{day} at #{time} at your
+office. I'd appreciate your arranging to have- a screen in the
+conference room for me to use during my presentation.
+
+I'll touch base with you a few days before the meeting to reconfirm.
+Sincerely,
+#{senderName}.
+**********************************************************************
