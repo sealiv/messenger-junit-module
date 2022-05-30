@@ -29,13 +29,7 @@ public class Messenger {
     }
 
     public static void main(String[] args) {
-        MailServer mailServer = new MailServer();
-        TemplateEngine templateEngine = new TemplateEngine();
-        Messenger messenger = new Messenger(mailServer, templateEngine);
-        Client client = messenger.getClient();
-
-        String templateBlank = args.length > 0 ? messenger.getTemplate(args[0]) : messenger.getTemplate();
-        messenger.sendMessage(client, new Template(templateBlank), args);
+        new Messenger(new MailServer(), new TemplateEngine()).run(args);
     }
 
     /**
@@ -53,7 +47,14 @@ public class Messenger {
         }
     }
 
-    private String getTemplate() {
+    void run(String ...args) {
+        Client client = this.getClient();
+
+        String templateBlank = args.length > 0 ? this.getTemplate(args[0]) : this.getTemplate();
+        this.sendMessage(client, new Template(templateBlank), args);
+    }
+
+    String getTemplate() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Chose template. Input one of values: 1 or 2 or 3 --> ");
         while (true) {
@@ -70,7 +71,7 @@ public class Messenger {
         }
     }
 
-    private String getTemplate(String fromFile) {
+    String getTemplate(String fromFile) {
         return Utils.readFile(fromFile);
     }
 
