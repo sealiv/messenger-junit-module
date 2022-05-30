@@ -13,8 +13,8 @@ import java.util.regex.Pattern;
  * The type Messenger.
  */
 public class Messenger {
-    private MailServer mailServer;
-    private TemplateEngine templateEngine;
+    private final MailServer mailServer;
+    private final TemplateEngine templateEngine;
 
     /**
      * Instantiates a new Messenger.
@@ -49,7 +49,7 @@ public class Messenger {
         if (args.length > 0) {
             mailServer.send(client.getAddresses(), messageContent, args[1]);
         } else {
-            mailServer.send(client.getAddresses(), messageContent);
+            mailServer.sendConsole(client.getAddresses(), messageContent);
         }
     }
 

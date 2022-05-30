@@ -11,16 +11,15 @@ public class MailServer {
      * @param addresses  the addresses
      * @param messageContent the message content
      */
-    public String send(String addresses, String messageContent, String ...args) {
-        if (args.length > 0) {
-            Utils.writeFile(args[0], messageContent);
-            System.out.printf("Mail to %s sent.\n", addresses);
-            return args[0];
-        }
-        else {
-            System.out.println(messageContent);
-            System.out.printf("Mail to %s sent.\n", addresses);
-            return "console";
-        }
+    public String sendConsole(String addresses, String messageContent) {
+        System.out.println(messageContent);
+        System.out.printf("Mail to %s sent.\n", addresses);
+        return "console";
+    }
+
+    public String send(String addresses, String messageContent, String args) {
+        Utils.writeFile(args, messageContent);
+        System.out.printf("Mail to %s sent.\n", addresses);
+        return args;
     }
 }
