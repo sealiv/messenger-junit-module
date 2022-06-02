@@ -1,0 +1,14 @@
+*******************************************************************3**
+Hi #{receiverName},
+
+My name is #{senderName} and I'm looking for the new #{job position} at
+#{companyName}.
+
+Your work on '#{project}' looks realy impressive and ad such it drew
+our attention. As the matter of fact, we're currently working on a
+similar project at our company.
+If you're interested, I could send over the details of the job.
+
+Let me know,
+#{senderName}.
+**********************************************************************
