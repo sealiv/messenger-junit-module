@@ -14,7 +14,6 @@ public class TagUtils {
 
     private String getInvite(Set<String> tags) {
         return "Insert one string with parameters like: " + String.join(" ", tags) + " --> ";
-//                + "\n" + "if parameter consist with more than one word - type it wrapped in ''";
     }
 
     public Map<String, String> getParams(Set<String> tags, String tagValues) {
