@@ -26,7 +26,7 @@ public class TemplateEngine {
         return fillTags(template, params);
     }
 
-    private String fillTags(Template template, Map<String, String> params) {
+    String fillTags(Template template, Map<String, String> params) {
         String result = template.getRawText();
         for (String s: params.keySet()) {
             result = result.replaceAll("#\\{" + s + "}", params.get(s));
@@ -34,7 +34,7 @@ public class TemplateEngine {
         return result;
     }
 
-    private Set<String> findRawTags(String text) {
+    Set<String> findRawTags(String text) {
         Set<String> tags = new TreeSet<>();
         Pattern pattern = Pattern.compile("(#\\{)(.+?)(})");
         Matcher matcher = pattern.matcher(text);
