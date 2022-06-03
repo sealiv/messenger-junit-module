@@ -22,12 +22,8 @@ public class MailServer {
             System.out.printf("Mail to %s sent to console.\n", addresses);
         } else {
             new FileUtils().writeFile(fileTo, messageContent);
-            System.out.printf("Mail to %s sent to file.\n", addresses);
+            System.out.printf("Mail was sent to %s. Content wrote to file '%s'.\n", addresses, fileTo.getPath());
         }
-    }
-
-    public File getFileTo() {
-        return fileTo;
     }
 
     public void setFileTo(File fileTo) {
