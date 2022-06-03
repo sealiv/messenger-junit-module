@@ -18,7 +18,6 @@ public class ConsoleUtils {
                 if (number > 3) {
                     throw new NumberFormatException("Number more than 3.");
                 }
-                scanner.close();
                 return FreeTemplates.getBlank(number - 1);
             } catch (NumberFormatException e) {
                 System.out.println("You input invalid. Please, try again (1 or 2 or 3) --> ");
@@ -35,7 +34,6 @@ public class ConsoleUtils {
             Matcher matcher = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$").matcher(email);
             if (matcher.find()) {
                 client.setAddresses(email);
-                scanner.close();
                 return client;
             }
             System.out.print("Your input email invalid. Try input Email again --> ");

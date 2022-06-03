@@ -13,7 +13,8 @@ public class TagUtils {
     }
 
     private String getInvite(Set<String> tags) {
-        return "Insert one string with parameters like: " + String.join(" ", tags) + " --> ";
+        return "Input string with parameters. Use 'space symbol' between values." + System.lineSeparator()
+                + String.join("  ", tags) + " --> ";
     }
 
     public Map<String, String> getParams(Set<String> tags, String tagValues) {

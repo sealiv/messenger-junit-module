@@ -1,7 +1,7 @@
 *******************************************************************3**
 Hi #{receiverName},
 
-My name is #{senderName} and I'm looking for the new #{job position} at
+My name is #{senderName} and I'm looking for the new #{job_position} at
 #{companyName}.
 
 Your work on '#{project}' looks realy impressive and ad such it drew

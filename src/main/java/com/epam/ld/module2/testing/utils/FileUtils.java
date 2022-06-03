@@ -20,22 +20,16 @@ public class FileUtils {
 
     public String readFile(String path) {
         File file = new File(path);
-        System.out.println("file.exists(): " + file.exists());
         if (!file.exists()) {
             String absolutePath = this.getClass().getResource("/" + path).getPath();
             file = new File(absolutePath.replace("%20", " "));
         }
-        return readFile(file);
-    }
-
-    public String readFile(File file) {
         StringBuilder sb = new StringBuilder();
         try {
             Scanner scanner = new Scanner(file, "ISO-8859-1");
             while (scanner.hasNextLine()) {
                 sb.append(scanner.nextLine()).append(System.lineSeparator());
             }
-            scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
