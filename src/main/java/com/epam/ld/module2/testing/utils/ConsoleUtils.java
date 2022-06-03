@@ -6,8 +6,16 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The utils for input from Console.
+ */
 public class ConsoleUtils {
 
+    /**
+     * Getting the Template from free Templates.
+     *
+     * @return the String
+     */
     public String getTemplate() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Chose template. Input one of values: 1 or 2 or 3 --> ");
@@ -25,6 +33,11 @@ public class ConsoleUtils {
         }
     }
 
+    /**
+     * Getting the Client from console.
+     *
+     * @return the new Client.
+     */
     public Client getClient() {
         Scanner scanner = new Scanner(System.in);
         Client client = new Client();

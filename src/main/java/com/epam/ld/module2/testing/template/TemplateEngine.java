@@ -26,6 +26,13 @@ public class TemplateEngine {
         return fillTags(template, params);
     }
 
+    /**
+     * Changing template tags to their values.
+     *
+     * @param template the template
+     * @param params the map of tag values
+     * @return the string
+     */
     String fillTags(Template template, Map<String, String> params) {
         String result = template.getRawText();
         for (String s: params.keySet()) {
@@ -34,6 +41,12 @@ public class TemplateEngine {
         return result;
     }
 
+    /**
+     * Searching tags in template.
+     *
+     * @param text the text from template
+     * @return the set of string
+     */
     Set<String> findRawTags(String text) {
         Set<String> tags = new TreeSet<>();
         Pattern pattern = Pattern.compile("(#\\{)(.+?)(})");

@@ -1,9 +1,5 @@
 package com.epam.ld.module2.testing.template;
 
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * The type Template.
  */

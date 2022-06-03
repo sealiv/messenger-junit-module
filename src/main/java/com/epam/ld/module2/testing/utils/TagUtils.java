@@ -3,8 +3,17 @@ package com.epam.ld.module2.testing.utils;
 import com.epam.ld.module2.testing.exception.LeftRawTagsException;
 import java.util.*;
 
+/**
+ * The utils for work with tags.
+ */
 public class TagUtils {
 
+    /**
+     * Getting the tag values as console input.
+     *
+     * @param tags the Set of tags from template
+     * @return the String with tag values.
+     */
     public String getTagValues(Set<String> tags) {
         Scanner scanner = new Scanner(System.in);
         String inviteToInput = getInvite(tags);
@@ -17,6 +26,12 @@ public class TagUtils {
                 + String.join("  ", tags) + " --> ";
     }
 
+    /**
+     * Make map from Set of tag and String of values.
+     * @param tags the Set of tags from template
+     * @param tagValues the String with tag values.
+     * @return the Map with tag values.
+     */
     public Map<String, String> getParams(Set<String> tags, String tagValues) {
         Map<String, String> params = new HashMap<>();
         String[] values = tagValues.split(" ");

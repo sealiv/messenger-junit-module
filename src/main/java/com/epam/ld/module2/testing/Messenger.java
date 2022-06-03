@@ -19,6 +19,7 @@ public class Messenger {
      *
      * @param mailServer     the mail server
      * @param templateEngine the template engine
+     * @param args the names of file template and file to send
      */
     public Messenger(MailServer mailServer, TemplateEngine templateEngine, String ...args) {
         this.mailServer = mailServer;
@@ -28,6 +29,11 @@ public class Messenger {
         }
     }
 
+    /**
+     * Main class
+     *
+     * @param args the names of file template and file to send
+     */
     public static void main(String[] args) {
         ConsoleUtils consoleUtils = new ConsoleUtils();
         FileUtils fileUtils = new FileUtils();
